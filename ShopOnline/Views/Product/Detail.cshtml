@@ -1,0 +1,17 @@
+﻿@model ProductDetailViewModel
+
+@{
+    ViewBag.Title = "Dettaglio prodotto";
+}
+
+<div>
+    <h4>Nome: @Model.Name</h4>
+    <hr />
+    <p>Descrizione: @Model.Description</p>
+    <br />
+    <span>Prezzo: @Model.Price</span>
+    <br />
+    <form asp-controller="Product" asp-action="Delete" asp-route-id="@Model.Id" method="post">
+        <button type="submit">Elimina</button>
+    </form>
+</div>

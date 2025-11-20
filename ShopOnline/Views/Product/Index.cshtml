@@ -1,0 +1,32 @@
+﻿@model List<ProductViewModel>
+
+@{
+    ViewBag.Title = "Lista prodotti";
+    var culterInfo = new CultureInfo("it-IT");
+}
+
+@if(TempData["DeleteError"] != null)
+{
+    <h4 style="color:red">@TempData["DeleteError"]</h4>
+    <br />
+}
+
+@if(Model.Count == 0)
+{
+    <div>
+        <h3 class="m-auto">Non ci sono prodotti</h3>
+    </div>
+}
+else
+{
+    @foreach(ProductViewModel productViewModel in Model)
+    {
+        <div>
+            <h4>Name: @productViewModel.Name</h4>
+            <hr />
+            <span>Price: @productViewModel.Price</span>
+            <br />
+            <a asp-controller="Product" asp-action="Detail" asp-route-id="@productViewModel.Id">Dettagli</a>
+        </div>
+    }
+}
